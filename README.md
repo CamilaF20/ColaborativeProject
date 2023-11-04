@@ -1,5 +1,5 @@
 # ColaborativeProject
-Mmbers:
+Members:
 - Cesar Ricardo Caro Sanchez
 - Maria Camila Figueredo Molano
 - Eimy Xiomara Ricaurte Garcia
