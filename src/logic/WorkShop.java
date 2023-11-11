@@ -6,9 +6,34 @@ public class WorkShop {
         return null;
     }
 
-    public String primeFactors(int num){
-        //TODO Cesar
-        return null;
+    public static String primeFactors(int number) {
+        StringBuilder result = new StringBuilder();
+        int originalNumber = number;
+
+        for (int i = 2; i <= number; i++) {
+            int count = 0;
+            while (number % i == 0) {
+                number = number / i;
+                count++;
+            }
+
+            if (count > 0) {
+                if (result.length() > 0) {
+                    result.append(" * ");
+                }
+                result.append(i);
+                if (count > 1) {
+                    result.append("^").append(count);
+                }
+            }
+        }
+
+        if (result.length() == 0) {
+            // El número es primo
+            result.append(originalNumber);
+        }
+
+        return result.toString();
     }
 
     public String ownName(String name){
