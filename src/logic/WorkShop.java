@@ -8,6 +8,13 @@ public class WorkShop {
         return null;
     }
 
+    /**
+     * Computes the prime factors of a given number.
+     *
+     * @param number The number to find prime factors for.
+     * @return A string representing the prime factors in the format "p1^x1 * p2^x2
+     *         * ...".
+     */
     public static String primeFactors(int number) {
         StringBuilder result = new StringBuilder();
         int originalNumber = number;
@@ -31,7 +38,6 @@ public class WorkShop {
         }
 
         if (result.length() == 0) {
-
             result.append(originalNumber);
         }
 
@@ -47,37 +53,37 @@ public class WorkShop {
         // TODO eimy
         return false;
     }
-    public boolean isMagicNumber(int numero) {
-        // Convertir el número en una cadena para trabajar con los dígitos
-        String numeroStr = Integer.toString(numero);
-        int[] digitos = new int[numeroStr.length()];
 
-        // Extraer los dígitos y almacenarlos en un arreglo
-        for (int i = 0; i < numeroStr.length(); i++) {
-            digitos[i] = Character.getNumericValue(numeroStr.charAt(i));
+    /**
+     * Checks if a number is a magic number.
+     *
+     * @param number The number to check for magic number property.
+     * @return True if the number is a magic number, false otherwise.
+     */
+    public boolean isMagicNumber(int number) {
+        String numberStr = Integer.toString(number);
+        int[] digits = new int[numberStr.length()];
+
+        for (int i = 0; i < numberStr.length(); i++) {
+            digits[i] = Character.getNumericValue(numberStr.charAt(i));
         }
 
-        // Ordenar los dígitos en orden ascendente y descendente
-        int[] ascendente = Arrays.copyOf(digitos, digitos.length);
-        Arrays.sort(ascendente);
+        int[] ascending = Arrays.copyOf(digits, digits.length);
+        Arrays.sort(ascending);
 
-        int[] descendente = Arrays.copyOf(digitos, digitos.length);
-        Arrays.sort(descendente);
-        for (int i = 0; i < descendente.length / 2; i++) {
-            int temp = descendente[i];
-            descendente[i] = descendente[descendente.length - 1 - i];
-            descendente[descendente.length - 1 - i] = temp;
+        int[] descending = Arrays.copyOf(digits, digits.length);
+        Arrays.sort(descending);
+        for (int i = 0; i < descending.length / 2; i++) {
+            int temp = descending[i];
+            descending[i] = descending[descending.length - 1 - i];
+            descending[descending.length - 1 - i] = temp;
         }
 
-        // Calcular la diferencia entre los números ordenados
-        int resultadoResta = Integer.parseInt(Arrays.toString(descendente).replaceAll("\\D", ""))
-                - Integer.parseInt(Arrays.toString(ascendente).replaceAll("\\D", ""));
+        int resultDifference = Integer.parseInt(Arrays.toString(descending).replaceAll("\\D", ""))
+                - Integer.parseInt(Arrays.toString(ascending).replaceAll("\\D", ""));
 
-        // Verificar si es "Magic" o "No Magic"
-        return resultadoResta == numero;
+        return resultDifference == number;
     }
-
-    
 
     public boolean friendlyNumbers(int num, int num2) {
         // TODO Camila
