@@ -73,7 +73,6 @@ public class WorkShop {
      * @return modified proper noun.
      */
     public String ownName(String name) {
-        // TODO Camila
         char[] own = new char[name.length()];
         int count = 0;
         for (int i = 0; i < name.length(); i++) {
@@ -153,9 +152,32 @@ public class WorkShop {
         return resultDifference == number;
     }
 
-    public boolean friendlyNumbers(int num, int num2) {
-        // TODO Camila
-        return false;
+    /**
+     * Method that evaluates whether the sum of the divisors of two numbers are equal or not
+     * @param numberOne Receives the first number to evaluate
+     * @param numberTwo Receives the second number to evaluate
+     * @return Whether the numbers evaluated are friends or not
+     */
+    public boolean friendlyNumbers(int numberOne, int numberTwo) {
+        int divisors = 0;
+        int sum1 = 0;
+        int sum2 = 0;
+        for (int count = 1; count < numberOne; count++) {
+            if (numberOne % count == 0) {
+                divisors = count;
+                sum1 += divisors;
+            }
+        }
+        for (int count = 1; count < numberTwo; count++){
+            if (numberTwo % count == 0){
+                divisors = count;
+                sum2 += divisors;
+            }
+        }
+        if (sum1 == numberTwo && sum2 == numberOne){
+            return true;
+        }else {
+            return false;
+        }
     }
-
 }

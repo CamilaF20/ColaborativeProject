@@ -40,7 +40,7 @@ public class Runner {
                 calculateMagic();
                 break;
             case 6:
-                workShop.friendlyNumbers(10, 20);
+                JOptionPane.showMessageDialog(null, friendlyNumbers() + "\n Please press enter to go back to menu");
                 break;
             case 7:
                 centinel = false;
@@ -169,5 +169,22 @@ public class Runner {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number.");
             }
         }
+    }
+
+    /**
+     * method that evaluates whether two numbers are friends or not
+     * @return true if the numbers are friends or false if not
+     */
+    public boolean friendlyNumbers(){
+        int numberOne ;
+        int numberTwo ;
+        try{
+            numberOne = Integer.parseInt(JOptionPane.showInputDialog("Please enter a first number"));
+            numberTwo = Integer.parseInt(JOptionPane.showInputDialog("Please enter a second number"));
+            return workShop.friendlyNumbers(numberOne,numberTwo);
+        }catch (Exception e){
+            return false;
+        }
+
     }
 }
