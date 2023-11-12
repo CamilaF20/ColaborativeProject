@@ -67,9 +67,39 @@ public class WorkShop {
         return result.toString();
     }
 
+    /**
+     * method that modifies the character string
+     * @param name user-given character string.
+     * @return modified proper noun.
+     */
     public String ownName(String name) {
         // TODO Camila
-        return null;
+        char[] own = new char[name.length()];
+        int count = 0;
+        for (int i = 0; i < name.length(); i++) {
+            if(i - 1 < 0 || i + 1 > name.length())
+                continue;
+            if (name.charAt(i) == ' ' && name.charAt(i - 1) == ' ') {
+                continue;
+            }
+            if (name.charAt(i) != ' ' && name.charAt(i - 1) == ' ' && name.charAt(i + 1) == ' '){
+                own[count] = Character.toLowerCase(name.charAt(i));
+                count++;
+                continue;
+            }
+            if (name.charAt(i) != ' ' && name.charAt(i - 1) == ' '){
+                own[count] = Character.toUpperCase(name.charAt(i));
+                count++;
+            }else {
+                own[count] = Character.toLowerCase(name.charAt(i));
+                count++;
+            }
+        }
+        if (name.charAt(0) != ' '){
+            own[0] = Character.toUpperCase(name.charAt(0));
+        }
+        String ownString = new String(own);
+        return ownString.trim();
     }
 
 

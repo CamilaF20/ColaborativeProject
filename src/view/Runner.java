@@ -5,7 +5,6 @@ import logic.WorkShop;
 
 import javax.swing.*;
 
-
 public class Runner {
     WorkShop workShop = new WorkShop();
     static Runner runner = new Runner();
@@ -32,7 +31,7 @@ public class Runner {
                 primeFactor();
                 break;
             case 3:
-                workShop.ownName(null);
+                JOptionPane.showMessageDialog(null,ownName() + "\n Please press enter to go back to menu ");
                 break;
             case 4:
                 JOptionPane.showMessageDialog(null, egoNumber() + "\n Please press enter to go back to menu");
@@ -52,8 +51,6 @@ public class Runner {
         }
     }
 }
-
-
     /**
      * Receives the number to be evaluated
      * @return the equivalent roman number
@@ -66,23 +63,6 @@ public class Runner {
         }catch (Exception e){
             return "Please the next time enter a number \n";
         }
-
-
-    }
-
-    /**
-     * Receives a number to evaluate if it is egolatrous or not
-     * @return true if the number is egolatrous
-     */
-    private boolean egoNumber() {
-        int number=0;
-        try{
-            number = Integer.parseInt(JOptionPane.showInputDialog("Please enter a number"));
-            return workShop.egotisticalNumber(number);
-        }catch (Exception e){
-            return false;
-        }
-
     }
 
     /**
@@ -94,12 +74,10 @@ public class Runner {
     private void primeFactor() {
         while (true) {
             String input = JOptionPane.showInputDialog("Enter a number to find its prime factors: ");
-
             if (input == null) {
                 menu();
                 return;
             }
-
             try {
                 int number = Integer.parseInt(input);
 
@@ -125,6 +103,37 @@ public class Runner {
     }
 
     /**
+     * Method that receives a text string
+     * @return The proper name
+     */
+    public String ownName() {
+        while (true) {
+            String name;
+            try {
+                name = JOptionPane.showInputDialog("Enter your name ");
+                return workShop.ownName(name);
+            } catch (Exception e) {
+                return "Invalid Option";
+            }
+        }
+    }
+
+    /**
+     * Receives a number to evaluate if it is egolatrous or not
+     * @return true if the number is egolatrous
+     */
+    private boolean egoNumber() {
+        int number=0;
+        try{
+            number = Integer.parseInt(JOptionPane.showInputDialog("Please enter a number"));
+            return workShop.egotisticalNumber(number);
+        }catch (Exception e){
+            return false;
+        }
+
+    }
+
+    /**
      * This method prompts the user to enter a number to check if it's a Magic
      * number using JOptionPane dialogs.
      * It continues to ask for input until the user decides to go back to the main
@@ -138,7 +147,6 @@ public class Runner {
                 menu();
                 return;
             }
-
             try {
                 int number = Integer.parseInt(input);
 
