@@ -14,41 +14,45 @@ public class Runner {
     }
     public void menu() {
     boolean centinel = true;
+    try {
     while (centinel) {
-        int option = Integer.parseInt(JOptionPane.showInputDialog("********* MENU ******** \n" +
-                "1. Roman numeral \n" +
-                "2. Prime factors\n" +
-                "3. Own Name\n" +
-                "4. Egotistical numbers \n" +
-                "5. Magic number\n" +
-                "6. Friendly numbers\n" +
-                "7. Go out"));
-        switch (option) {
-            case 1:
-                JOptionPane.showMessageDialog(null, roman() + "\n Please press enter to go back to menu");
-                break;
-            case 2:
-                primeFactor();
-                break;
-            case 3:
-                JOptionPane.showMessageDialog(null,ownName() + "\n Please press enter to go back to menu ");
-                break;
-            case 4:
-                JOptionPane.showMessageDialog(null, egoNumber() + "\n Please press enter to go back to menu");
-                break;
-            case 5:
-                calculateMagic();
-                break;
-            case 6:
-                JOptionPane.showMessageDialog(null, friendlyNumbers() + "\n Please press enter to go back to menu");
-                break;
-            case 7:
-                centinel = false;
-                System.exit(0); // Exit the program
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Invalid Option");
+            int option = Integer.parseInt(JOptionPane.showInputDialog("********* MENU ******** \n" +
+                    "1. Roman numeral \n" +
+                    "2. Prime factors\n" +
+                    "3. Own Name\n" +
+                    "4. Egotistical numbers \n" +
+                    "5. Magic number\n" +
+                    "6. Friendly numbers\n" +
+                    "7. Go out"));
+            switch (option) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, roman() + "\n Please press enter to go back to menu");
+                    break;
+                case 2:
+                    primeFactor();
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, ownName() + "\n Please press enter to go back to menu ");
+                    break;
+                case 4:
+                    JOptionPane.showMessageDialog(null, egoNumber() + "\n Please press enter to go back to menu");
+                    break;
+                case 5:
+                    calculateMagic();
+                    break;
+                case 6:
+                    friendlyNumbers();
+                    break;
+                case 7:
+                    centinel = false;
+                    System.exit(0); // Exit the program
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Invalid Option");
+            }
         }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Invalid Option");
     }
 }
     /**
@@ -175,15 +179,21 @@ public class Runner {
      * method that evaluates whether two numbers are friends or not
      * @return true if the numbers are friends or false if not
      */
-    public boolean friendlyNumbers(){
+    private void friendlyNumbers() {
+
         int numberOne ;
         int numberTwo ;
         try{
             numberOne = Integer.parseInt(JOptionPane.showInputDialog("Please enter a first number"));
             numberTwo = Integer.parseInt(JOptionPane.showInputDialog("Please enter a second number"));
-            return workShop.friendlyNumbers(numberOne,numberTwo);
+            boolean state = workShop.friendlyNumbers(numberOne,numberTwo);
+            if (state == true) {
+                JOptionPane.showMessageDialog(null, "The numbers are friends");
+            }else {
+                JOptionPane.showMessageDialog(null,"The numbers are not friends");
+            }
         }catch (Exception e){
-            return false;
+            JOptionPane.showMessageDialog(null, "Invalid Option");
         }
 
     }
