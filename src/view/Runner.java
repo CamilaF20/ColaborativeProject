@@ -4,14 +4,24 @@ import logic.WorkShop;
 
 
 import javax.swing.*;
-
+/**
+ * The `Runner` class represents the main user interface for interacting with the system.
+ */
 public class Runner {
     WorkShop workShop = new WorkShop();
     static Runner runner = new Runner();
 
+    /**
+     * The entry point of the application. Creates an instance of Runner and calls the mainMenu method.
+     * @param args The command-line arguments.
+     */
     public static void main(String[] args) {
         runner.menu();
     }
+
+    /**
+     * Displays the main menu and handles user input to create and logic .
+     */
     public void menu() {
     boolean centinel = true;
     try {
@@ -195,6 +205,5 @@ public class Runner {
         }catch (Exception e){
             JOptionPane.showMessageDialog(null, "Invalid Option");
         }
-
     }
 }

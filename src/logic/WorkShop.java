@@ -2,6 +2,9 @@ package logic;
 
 import java.util.Arrays;
 
+/**
+ * The `WorkShop` class provides functionality to the application methods
+ */
 public class WorkShop {
     /**
      * Checks if the given number is equivalent to a roman number between 1 and 3999
